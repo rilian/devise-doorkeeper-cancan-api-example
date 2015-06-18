@@ -1,0 +1,11 @@
+/.bundle
+/log/*
+!/log/.keep
+/tmp
+*.swp
+.idea
+.env.local
+.env
+.DS_Store
+coverage/
+doc/reqres
