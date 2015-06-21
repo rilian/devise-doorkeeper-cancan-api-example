@@ -22,8 +22,11 @@ module Requests
     end
 
     [:post, :put, :delete, :patch].each do |m|
-      define_method "#{m}_as_user" do |url, options = {}|
-        send(m, url, options.blank? ? {} : options.to_json, _user_auth_headers)
+      define_method "#{m}_as_user" do |url, opts = {}|
+        opts = {} if opts.blank?
+        opts = opts.to_json unless opts.values.any? { |v| v.class == Rack::Test::UploadedFile }
+
+        send(m, url, opts, _user_auth_headers)
       end
     end
 
