@@ -1,5 +1,5 @@
 GEM
-  remote: https://rubygems.org/
+  remote: https://gems.ruby-china.org/
   specs:
     actionmailer (4.2.2)
       actionpack (= 4.2.2)
@@ -225,3 +225,6 @@ DEPENDENCIES
   timecop
   vcr
   webmock
+
+BUNDLED WITH
+   1.11.2
