@@ -1,3 +1,4 @@
+require "pry"
 Doorkeeper.configure do
   # Change the ORM that doorkeeper will use.
   # Currently supported options are :active_record, :mongoid2, :mongoid3,
@@ -6,10 +7,12 @@ Doorkeeper.configure do
 
   # This block will be called to check whether the resource owner is authenticated or not.
   resource_owner_authenticator do
-    raise "Please configure doorkeeper resource_owner_authenticator block located in #{__FILE__}"
+    #raise "Please configure doorkeeper resource_owner_authenticator block located in #{__FILE__}"
     # Put your resource owner authentication logic here.
     # Example implementation:
-    #   User.find_by_id(session[:user_id]) || redirect_to(new_user_session_url)
+#binding.pry
+    User.find(1)
+    #User.find_by_id(session[:user_id]) || redirect_to(new_user_session_url)
   end
 
   resource_owner_from_credentials do |_routes|
@@ -64,7 +67,7 @@ Doorkeeper.configure do
   # By default it retrieves first from the `HTTP_AUTHORIZATION` header, then
   # falls back to the `:client_id` and `:client_secret` params from the `params` object.
   # Check out the wiki for more information on customization
-  # client_credentials :from_basic, :from_params
+  client_credentials :from_basic, :from_params
 
   # Change the way access token is authenticated from the request object.
   # By default it retrieves first from the `HTTP_AUTHORIZATION` header, then
@@ -101,9 +104,11 @@ Doorkeeper.configure do
   # before enabling:
   #   http://tools.ietf.org/html/rfc6819#section-4.4.2
   #   http://tools.ietf.org/html/rfc6819#section-4.4.3
-  #
-  # grant_flows %w(authorization_code client_credentials)
-  grant_flows %w[password client_credentials]
+  # https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=APPID&secret=APPSECRET
+  #binding.pry
+  #grant_flows "client_credentials"
+  #%w(authorization_code client_credentials)
+  #########grant_flows %w[password client_credentials]
 
   # Under some circumstances you might want to have applications auto-approved,
   # so that the user skips the authorization step.

@@ -1,4 +1,4 @@
-source 'https://rubygems.org'
+source 'https://gems.ruby-china.org'
 
 gem 'rails', '4.2.2'
 gem 'rails-api'
@@ -13,7 +13,8 @@ gem 'doorkeeper'
 gem 'cancancan'
 
 group :development, :test do
-  gem 'byebug'
+  gem 'pry-byebug'
+  gem 'pry-rails'
 end
 
 group :development do
